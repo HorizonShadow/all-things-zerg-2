@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
-import { Race } from '/lib/Race';
-import { schemas } from '/lib/data';
+import { Race } from '../lib/Race';
+import { schemas } from '../lib/data';
 
 Meteor.startup(() => {
   console.log(schemas);

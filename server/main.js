@@ -16,9 +16,9 @@ Meteor.publish('units', () => {
 });
 
 Meteor.startup(() => {
-    Race.upsert({name: "Protoss"});
-    Race.upsert({name: "Zerg"});
-    Race.upsert({name: "Terran"});
+    Race.upsert({name: "Protoss" }, { name: "Protoss" });
+    Race.upsert({name: "Zerg"}, { name: "Zerg" });
+    Race.upsert({name: "Terran"}, { name: "Terran" });
 
     Unit.upsert({name: "Pylon"}, {$set: {race: "Protoss", buildTime: 18}});
     Unit.upsert({name: "Gateway"}, {$set: {race: "Protoss", buildTime: 46}});

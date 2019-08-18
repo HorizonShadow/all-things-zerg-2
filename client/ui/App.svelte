@@ -1,14 +1,13 @@
 <script>
     import Tracker from './Tracker';
     import { Build } from '../../lib/Build';
+    import UnitOptions from './UnitOptions';
     let value = "";
     let builds = [];
 
     function computation() {
-        console.log("Running computation", value);
         Meteor.subscribe('builds', value).ready();
         builds = Build.search(value).fetch();
-        console.log(builds);
     }
 </script>
 
@@ -16,4 +15,6 @@
     <label for="time">Time</label>
     <input id="time" bind:value >
 </Tracker>
+
+<UnitOptions race="Protoss"/>
 

@@ -2,23 +2,25 @@
     import Tracker from './Tracker';
     import { Build } from '../../lib/Build';
     import UnitSelect from './UnitSelect';
-    let value = "";
+    import TimeSelect from './TimeSelect';
+    
     let builds = [];
-    let selected = [];
+    let units = [];
+    let time = 60;
 
     function computation() {
-        Meteor.subscribe('builds', value, selected).ready();
-        builds = Build.search(value, selected).fetch();
+        Meteor.subscribe('builds', time, units).ready();
+        builds = Build.search(time, units).fetch();
         console.log(builds)
     }
 
-    $: console.log(selected);
+    $: console.log(units);
 </script>
 
-<Tracker deps={[value, selected]} fn={computation}>
-    <label for="time">Time</label>
-    <input id="time" bind:value >
+<Tracker deps={[time, units]} fn={computation}>
+    <TimeSelect bind:selected={time} />
+    <UnitSelect race="Protoss" bind:selected={units} />
 </Tracker>
 
-<UnitSelect race="Protoss" bind:selected={selected} />
+
 

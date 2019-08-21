@@ -1,14 +1,21 @@
 <script>
     import Option from './Option';
     export let options = [];
-    export let selected = [];
+    export let selected;
+    export let multiple = false;
 
     function handleSelect(option) {
-        if(selected.includes(option.key)) {
-            selected = selected.filter(s => s !== option.key);
+        console.log(selected);
+        if(multiple) {
+            if(selected.includes(option.key)) {
+                selected = selected.filter(s => s !== option.key);
+            } else {
+                selected = [ ...selected, option.key ];
+            }
         } else {
-            selected = [ ...selected, option.key ];
+            selected = option.key;
         }
+
     }
 </script>
 
@@ -24,7 +31,7 @@
         <div class="column">
             <Option 
                 on:click={() => handleSelect(option)} 
-                selected={selected.includes(option.key)}
+                selected={multiple ? selected.includes(option.key) : selected === option.key}
             >
                 {option.value}
             </Option>

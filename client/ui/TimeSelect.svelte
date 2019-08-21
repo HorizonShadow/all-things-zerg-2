@@ -9,6 +9,7 @@
 </script>
 
 <Select 
+    label="Select Time"
     options={options}
     bind:selected
 />

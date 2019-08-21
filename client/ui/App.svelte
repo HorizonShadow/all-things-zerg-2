@@ -18,8 +18,25 @@
 </script>
 
 <Tracker deps={[time, units]} fn={computation}>
-    <TimeSelect bind:selected={time} />
-    <UnitSelect race="Protoss" bind:selected={units} />
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <section class="section">
+                    <div class="box">
+                        <TimeSelect bind:selected={time} />
+                        <UnitSelect race="Protoss" bind:selected={units} />
+                    </div>
+                </section>
+            </div>
+            <div class="column">
+                <section class="section">
+                    <div class="box">
+                        <h1 class="title">Possible Builds</h1>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
 </Tracker>
 
 

@@ -25,5 +25,5 @@
 </script>
 
 <Tracker deps={[race]} fn={computation}>
-    <Select options={options} bind:selected multiple/>
+    <Select options={options} bind:selected multiple label="Select Units"/>
 </Tracker>

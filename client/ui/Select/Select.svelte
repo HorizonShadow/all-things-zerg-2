@@ -3,6 +3,7 @@
     export let options = [];
     export let selected;
     export let multiple = false;
+    export let label = "";
 
     function handleSelect(option) {
         console.log(selected);
@@ -19,13 +20,7 @@
     }
 </script>
 
-<style>
-    .columns {
-        padding: 24px;
-    }
-</style>
-
-
+<h1 class="title">{label}</h1>
 <div class="columns is-multiline">
     {#each options as option} 
         <div class="column">
@@ -36,7 +31,6 @@
                 {option.value}
             </Option>
         </div>
-        
     {/each}
 </div>
 

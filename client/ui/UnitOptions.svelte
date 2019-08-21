@@ -4,11 +4,11 @@
     import UnitOption from './UnitOption';
     import { Unit } from '../../lib/Unit';
 
-
     export let race;
+    export let selected = [];
     
     let units = [];
-    let selected = [];
+
     function computation() {
         Meteor.subscribe('units').ready();
         units = Unit.find({

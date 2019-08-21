@@ -3,8 +3,8 @@ import {Race} from '../lib/Race';
 import {Unit} from '../lib/Unit';
 import {Build} from '../lib/Build';
 
-Meteor.publish('builds', value => {
-    return Build.search(value);
+Meteor.publish('builds', (value, selectedUnits) => {
+    return Build.search(value, selectedUnits);
 });
 
 Meteor.publish('races', () => {

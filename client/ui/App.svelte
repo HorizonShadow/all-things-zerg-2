@@ -4,17 +4,21 @@
     import UnitOptions from './UnitOptions';
     let value = "";
     let builds = [];
+    let selected = [];
 
     function computation() {
-        Meteor.subscribe('builds', value).ready();
-        builds = Build.search(value).fetch();
+        Meteor.subscribe('builds', value, selected).ready();
+        builds = Build.search(value, selected).fetch();
+        console.log(builds)
     }
+
+    $: console.log(selected);
 </script>
 
-<Tracker deps={[value]} fn={computation}>
+<Tracker deps={[value, selected]} fn={computation}>
     <label for="time">Time</label>
     <input id="time" bind:value >
 </Tracker>
 
-<UnitOptions race="Protoss"/>
+<UnitOptions race="Protoss" bind:selected={selected} />
 

@@ -1,5 +1,4 @@
 <script>
-    export let name;
     export let selected = false;
 </script>
 
@@ -15,5 +14,7 @@
 
 
 <div class="box" on:click class:selected>
-    <p>{name}</p>
+    <p>
+        <slot></slot>
+    </p>
 </div>

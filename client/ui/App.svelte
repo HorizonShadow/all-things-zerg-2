@@ -1,7 +1,7 @@
 <script>
     import Tracker from './Tracker';
     import { Build } from '../../lib/Build';
-    import UnitOptions from './UnitOptions';
+    import UnitSelect from './UnitSelect';
     let value = "";
     let builds = [];
     let selected = [];
@@ -20,5 +20,5 @@
     <input id="time" bind:value >
 </Tracker>
 
-<UnitOptions race="Protoss" bind:selected={selected} />
+<UnitSelect race="Protoss" bind:selected={selected} />
 

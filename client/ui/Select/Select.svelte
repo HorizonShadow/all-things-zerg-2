@@ -37,7 +37,7 @@
 <h1 class="title">{label}</h1>
 <div class="columns is-multiline">
     {#each options as option} 
-        <div class="column">
+        <div class="column is-4">
             <Option 
                 on:increment={() => handleIncrement(option)} 
                 on:decrement={() => handleDecrement(option)}

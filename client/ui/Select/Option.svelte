@@ -34,30 +34,41 @@
     .count-container {
         padding: 0;
     }
+
+    .option-text {
+        text-align: center;
+    }
+
+    .columns {
+        margin: 0;
+    }
 </style>
 
 
 <Box badge={selected} selected={selected} on:click={handleSingleSelect}>
     <div class="columns">
-        <div class="column" class:is-8={multiple}>
+        <div class="column is-12">
             <div>
-                <p>
+                <p class="option-text">
                     <slot></slot> 
                 </p>
             </div>
         </div>
-        {#if multiple}
-            <div class="column is-4 count-container">
+    </div>
+    {#if multiple}
+        <div class="columns is-variable is-1">
+            <div class="column is-6">
                 <button class="button count" on:click={() => dispatch('increment', null)}>
                     +
                 </button>
+            </div>
+            <div class="column is-6">
                 <button class="button count" on:click={() => dispatch('decrement', null)}>
                     -
                 </button>
             </div>
-        {/if}
-        
-    </div>
+        </div>
+    {/if}
 </Box>
 
 

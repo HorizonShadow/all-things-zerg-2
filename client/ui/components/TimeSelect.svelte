@@ -1,5 +1,5 @@
 <script>
-    import Select from './Select/Select';
+    import Select from './select/Select';
 
     export let selected = [];
     const options = [

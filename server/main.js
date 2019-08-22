@@ -42,8 +42,6 @@ Meteor.startup(() => {
             {time: 189, unit: "Gateway"},
             {time: 214, unit: "Gateway"},
             {time: 230, unit: "Pylon"}
-
         ]
-    })
-
+    });
 });

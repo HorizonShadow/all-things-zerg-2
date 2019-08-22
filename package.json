@@ -11,6 +11,7 @@
     "@babel/runtime": "^7.3.4",
     "@types/meteor": "^1.4.29",
     "bulma": "^0.7.5",
+    "bulma-badge": "^3.0.1",
     "meteor-node-stubs": "^0.4.1",
     "reflect-metadata": "^0.1.13",
     "simpl-schema": "^1.5.5",

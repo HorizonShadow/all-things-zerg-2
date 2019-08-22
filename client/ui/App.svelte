@@ -11,10 +11,8 @@
     function computation() {
         Meteor.subscribe('builds', time, units).ready();
         builds = Build.search(time, units).fetch();
-        console.log(builds)
     }
 
-    $: console.log(units);
 </script>
 
 <Tracker deps={[time, units]} fn={computation}>
@@ -32,6 +30,11 @@
                 <section class="section">
                     <div class="box">
                         <h1 class="title">Possible Builds</h1>
+                        {#each builds as build}
+                            <div class="box">
+                                <h5 class="title is-5">{build.name}</h5>
+                            </div>
+                        {/each}
                     </div>
                 </section>
             </div>

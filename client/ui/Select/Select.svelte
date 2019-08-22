@@ -1,22 +1,40 @@
 <script>
     import Option from './Option';
     export let options = [];
-    export let selected;
+    export let selected = [];
     export let multiple = false;
     export let label = "";
 
-    function handleSelect(option) {
-        console.log(selected);
-        if(multiple) {
-            if(selected.includes(option.key)) {
-                selected = selected.filter(s => s !== option.key);
-            } else {
-                selected = [ ...selected, option.key ];
-            }
-        } else {
-            selected = option.key;
-        }
+    const counts = {};
 
+    function handleIncrement(option) {
+
+        counts[option.key] = counts[option.key] ? counts[option.key] : 0;
+        counts[option.key] += 1;
+        console.log(selected);
+        selected = [ ...selected, option.key ];
+        
+        // if(multiple) {
+        //     if(selected.includes(option.key)) {
+        //         selected = selected.filter(s => s !== option.key);
+        //     } else {
+        //         selected = [ ...selected, option.key ];
+        //     }
+        // } else {
+        //     selected = option.key;
+        // }
+
+    }
+
+    function handleDecrement(option) {
+        counts[option.key] = counts[option.key] ? counts[option.key] : 1;
+        counts[option.key] -= 1;
+        selected = [];
+        Object.keys(counts).forEach(count => {
+            for(let i = 0; i < counts[count]; i++) {
+                selected.push(count);
+            }
+        });
     }
 </script>
 
@@ -25,8 +43,9 @@
     {#each options as option} 
         <div class="column">
             <Option 
-                on:click={() => handleSelect(option)} 
-                selected={multiple ? selected.includes(option.key) : selected === option.key}
+                on:increment={() => handleIncrement(option)} 
+                on:decrement={() => handleDecrement(option)}
+                selected={counts[option.key]}
             >
                 {option.value}
             </Option>

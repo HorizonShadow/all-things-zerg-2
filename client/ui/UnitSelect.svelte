@@ -17,7 +17,7 @@
         }).fetch();
         options = units.map(unit => {
             return {
-                key: unit._id,
+                key: unit.name,
                 value: unit.name
             }
         });

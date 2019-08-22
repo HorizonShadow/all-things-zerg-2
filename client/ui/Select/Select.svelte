@@ -5,24 +5,20 @@
     export let multiple = false;
     export let label = "";
 
-    const counts = {};
+    let counts = {};
 
-    function handleIncrement(option) {
-
-        counts[option.key] = counts[option.key] ? counts[option.key] : 0;
-        counts[option.key] += 1;
-        console.log(selected);
-        selected = [ ...selected, option.key ];
-        
-        // if(multiple) {
-        //     if(selected.includes(option.key)) {
-        //         selected = selected.filter(s => s !== option.key);
-        //     } else {
-        //         selected = [ ...selected, option.key ];
-        //     }
-        // } else {
-        //     selected = option.key;
-        // }
+    function handleIncrement(option) {        
+        if(multiple) {
+            counts[option.key] = counts[option.key] ? counts[option.key] : 0;
+            counts[option.key] += 1;
+            console.log(selected);
+            selected = [ ...selected, option.key ];
+        } else {
+            selected = option.key;
+            counts = {
+                [option.key]: 1
+            };
+        }
 
     }
 
@@ -45,6 +41,7 @@
             <Option 
                 on:increment={() => handleIncrement(option)} 
                 on:decrement={() => handleDecrement(option)}
+                multiple={multiple}
                 selected={counts[option.key]}
             >
                 {option.value}

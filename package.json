@@ -10,6 +10,7 @@
   "dependencies": {
     "@babel/runtime": "^7.3.4",
     "@types/meteor": "^1.4.29",
+    "array-flat-polyfill": "^1.0.1",
     "bulma": "^0.7.5",
     "bulma-badge": "^3.0.1",
     "meteor-node-stubs": "^0.4.1",

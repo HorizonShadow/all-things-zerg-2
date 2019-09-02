@@ -3,6 +3,7 @@
     import { Build } from '../../../lib/Build';
     import UnitSelect from '../components/UnitSelect';
     import TimeSelect from '../components/TimeSelect';
+    import { Link } from 'svelte-routing';
     
     let builds = [];
     let units = [];
@@ -17,6 +18,14 @@
     $: console.log(time);
 
 </script>
+
+<style>
+  .hover:hover { 
+    background-color: #f5f5f5;
+    cursor: pointer;
+  }
+</style>
+
 
 <Tracker deps={[time, units]} fn={computation}>
     <div class="columns">
@@ -33,8 +42,12 @@
                 <div class="box">
                     <h1 class="title">Possible Builds</h1>
                     {#each builds as build}
-                        <div class="box">
-                            <h5 class="title is-5">{build.name}</h5>
+                        <div class="box hover">
+                            <Link to={`/build/${build._id.toHexString()}`}> 
+                              <h5 class="title is-5">
+                                {build.name}
+                              </h5>
+                            </Link>
                         </div>
                     {/each}
                 </div>

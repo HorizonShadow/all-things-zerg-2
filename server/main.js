@@ -2,6 +2,7 @@ import {Meteor} from 'meteor/meteor';
 import {Race} from '../lib/Race';
 import {Unit} from '../lib/Unit';
 import {Build} from '../lib/Build';
+import { Accounts } from 'meteor/accounts-base';
 
 Meteor.publish('builds', (value, selectedUnits) => {
     return Build.find({});
@@ -26,22 +27,10 @@ Meteor.startup(() => {
     Unit.upsert({name: "Nexus"}, {$set: {race: "Protoss", buildTime: 71}});
     Unit.upsert({name: "Stargate"}, {$set: {race: "Protoss", buildTime: 43}});
 
-    Build.remove({});
-    Build.insert({
-        name: "Test",
-        race: "Protoss",
-        buildOrder: [
-            {time: 17, unit: "Pylon"},
-            {time: 43, unit: "Gateway"},
-            {time: 44, unit: "Assimilator"},
-            {time: 91, unit: "Nexus"},
-            {time: 98, unit: "Cybernetics Core"},
-            {time: 109, unit: "Assimilator"},
-            {time: 117, unit: "Pylon"},
-            {time: 171, unit: "Stargate"},
-            {time: 189, unit: "Gateway"},
-            {time: 214, unit: "Gateway"},
-            {time: 230, unit: "Pylon"}
-        ]
-    });
+    if(Meteor.users.find({}).fetch().length === 0) {
+      Accounts.createUser({
+        email: 'admin@allthingszerg.com',
+        password: Meteor.settings['admin_password']
+      })
+    }
 });

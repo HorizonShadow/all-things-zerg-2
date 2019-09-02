@@ -19,3 +19,5 @@ shell-server@0.4.0            # Server-side component of the `meteor shell` comm
 svelte:compiler
 static-html
 jagi:astronomy
+accounts-base
+accounts-password

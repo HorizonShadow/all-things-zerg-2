@@ -6,12 +6,15 @@
     
     let builds = [];
     let units = [];
-    let time = 60;
+    let time = 0;
 
     function computation() {
-        Meteor.subscribe('builds', time, units).ready();
-        builds = Build.search(time, units).fetch();
+        Meteor.subscribe('builds').ready();
+        builds = Build.search(time, units);
+        console.log(builds);
     }
+
+    $: console.log(time);
 
 </script>
 

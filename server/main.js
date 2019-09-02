@@ -4,7 +4,7 @@ import {Unit} from '../lib/Unit';
 import {Build} from '../lib/Build';
 
 Meteor.publish('builds', (value, selectedUnits) => {
-    return Build.search(value, selectedUnits);
+    return Build.find({});
 });
 
 Meteor.publish('races', () => {

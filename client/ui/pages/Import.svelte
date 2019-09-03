@@ -7,11 +7,9 @@
     let name = "";
     let buildOrder = "";
     let build = new Build();
-
+    let user;
     Tracker.autorun(() => {
-      if(!Meteor.user()) {
-        navigate('/admin/login');
-      }
+      user = Meteor.user();
     });
 
     function handleSubmit(e) {
@@ -20,7 +18,7 @@
     }
 </script>
 
-{#if Meteor.user()}
+{#if user}
   <div class="columns">
       <div class="column">
           <form on:submit={handleSubmit}>

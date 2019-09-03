@@ -2,6 +2,8 @@
   import { Tracker } from 'meteor/tracker';
   import { Meteor } from 'meteor/meteor';
   import { Build } from '/lib/Build';
+  import 'trix';
+  import 'trix/dist/trix.css';
 
   export let id;
 
@@ -21,6 +23,7 @@
 
 {#if Meteor.user() && build}
   <section class="section">
+    <h1 class="title">{build.name}</h1>
     <div class="columns">
       <div class="column">
         <table class="table">
@@ -41,7 +44,9 @@
 
         </table>
       </div>
-      <div class="column"></div>
+      <div class="column">
+        <trix-editor />
+      </div>
     </div>
   </section>
 {/if}

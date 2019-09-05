@@ -9,16 +9,17 @@
 
   let build;
   Tracker.autorun(() => {
-    console.log(id);
     Meteor.subscribe('builds');
     build = Build.findOne({
       _id: new Mongo.ObjectID(id)
     });
-    console.log(Build.find({}).fetch());
-    console.log(build, new Mongo.ObjectID(id));
   });
 
-  $: console.log(build);
+  function handleSubmit(e) {
+    e.preventDefault();
+    const reaction = e.target.elements[0].value;
+    console.log(reaction);
+  }
 </script>
 
 {#if Meteor.user() && build}
@@ -45,7 +46,11 @@
         </table>
       </div>
       <div class="column">
-        <trix-editor />
+        <form on:submit={handleSubmit}>
+          <input type="hidden" id="reaction" name="reaction"/>
+          <trix-editor input="reaction"/>
+          <button class="button" type="submit">Submit</button>
+        </form>
       </div>
     </div>
   </section>

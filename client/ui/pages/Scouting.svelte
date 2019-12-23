@@ -1,12 +1,15 @@
 <script>
     import Tracker from '../components/Tracker';
-    import { Build } from '../../../lib/Build';
+    import {Build} from '../../../lib/Build';
     import UnitSelect from '../components/UnitSelect';
     import TimeSelect from '../components/TimeSelect';
-    import { Link } from 'svelte-routing';
-    
+    import {Link} from 'svelte-routing';
+    import Select from "../components/select/Select.svelte";
+    import RaceSelect from "../components/RaceSelect.svelte";
+
     let builds = [];
     let units = [];
+    let race = "zerg";
     let time = 0;
 
     function computation() {
@@ -20,39 +23,46 @@
 </script>
 
 <style>
-  .hover:hover { 
-    background-color: #f5f5f5;
-    cursor: pointer;
-  }
+    .hover:hover {
+        background-color: #f5f5f5;
+        cursor: pointer;
+    }
 </style>
 
 
 <Tracker deps={[time, units]} fn={computation}>
-    <div class="columns">
-        <div class="column">
-            <section class="section">
+    <section class="section">
+        <div class="columns">
+            <div class="column">
                 <div class="box">
-                    <TimeSelect bind:selected={time} />
-                    <UnitSelect race="Protoss" bind:selected={units} />
+                    <RaceSelect bind:selected={race}/>
                 </div>
-            </section>
+            </div>
         </div>
-        <div class="column">
-            <section class="section">
+    </section>
+    <section class="section">
+        <div class="columns">
+            <div class="column">
+                <div class="box">
+                    <TimeSelect bind:selected={time}/>
+                    <UnitSelect race="{race}" bind:selected={units}/>
+                </div>
+            </div>
+            <div class="column">
                 <div class="box">
                     <h1 class="title">Possible Builds</h1>
                     {#each builds as build}
                         <div class="box hover">
-                            <Link to={`/build/${build._id.toHexString()}`}> 
-                              <h5 class="title is-5">
-                                {build.name}
-                              </h5>
+                            <Link to={`/build/${build._id.toHexString()}`}>
+                                <h5 class="title is-5">
+                                    {build.name}
+                                </h5>
                             </Link>
                         </div>
                     {/each}
                 </div>
-            </section>
+            </div>
         </div>
-    </div>
+    </section>
 </Tracker>
 

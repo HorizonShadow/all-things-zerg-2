@@ -19,7 +19,7 @@
     <div class="box">
       {#each builds as build}
         <div class="box">
-          <Link to={`/admin/build/${build._id.toHexString()}`}>
+          <Link to={`/admin/build/${build._id}`}>
             <h1 class="title">{build.name}</h1>
           </Link>
         </div>

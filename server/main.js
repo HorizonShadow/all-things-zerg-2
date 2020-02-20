@@ -4,6 +4,10 @@ import {Unit} from '../lib/Unit';
 import {Build} from '../lib/Build';
 import { Accounts } from 'meteor/accounts-base';
 
+Meteor.publish('build', id => {
+    return Build.find({ _id: id });
+});
+
 Meteor.publish('builds', (value, selectedUnits) => {
     return Build.find({});
 });

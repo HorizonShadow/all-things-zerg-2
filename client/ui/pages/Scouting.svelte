@@ -53,7 +53,7 @@
                     <h1 class="title">Possible Builds</h1>
                     {#each builds as build}
                         <div class="box hover">
-                            <Link to={`/build/${build._id.toHexString()}`}>
+                            <Link to={`/build/${build._id}`}>
                                 <h5 class="title is-5">
                                     {build.name}
                                 </h5>

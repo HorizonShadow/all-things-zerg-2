@@ -8,7 +8,7 @@
     "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
   "dependencies": {
-    "@babel/runtime": "^7.8.4",
+    "@babel/runtime": "^7.8.7",
     "@types/meteor": "^1.4.40",
     "array-flat-polyfill": "^1.0.1",
     "bcrypt": "^3.0.8",
@@ -18,8 +18,8 @@
     "meteor-node-stubs": "^0.4.1",
     "multer": "^1.4.2",
     "reflect-metadata": "^0.1.13",
-    "svelte": "^3.18.2",
-    "svelte-routing": "^1.4.0",
+    "svelte": "3.16.4",
+    "svelte-routing": "^1.4.2",
     "trix": "^1.2.2"
   },
   "meteor": {

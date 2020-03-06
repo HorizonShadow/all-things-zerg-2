@@ -1,6 +1,6 @@
 <script>
     import Tracker from '../components/Tracker';
-    import {Build} from '../../../lib/Build';
+    import {Build} from '../../../imports/Build';
     import UnitSelect from '../components/UnitSelect';
     import TimeSelect from '../components/TimeSelect';
     import {Link} from 'svelte-routing';

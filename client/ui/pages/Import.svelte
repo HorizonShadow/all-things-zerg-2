@@ -1,5 +1,5 @@
 <script>
-    import { Build } from '/lib/Build';
+    import { Build } from '/imports/Build';
     import { Tracker } from 'meteor/tracker';
     import { navigate } from 'svelte-routing';
     import { Meteor } from 'meteor/meteor';

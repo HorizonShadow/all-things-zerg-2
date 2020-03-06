@@ -1,8 +1,37 @@
 import {Meteor} from 'meteor/meteor';
-import {Race} from '../lib/Race';
-import {Unit} from '../lib/Unit';
-import {Build} from '../lib/Build';
+import {Race} from '../imports/Race';
+import {Unit} from '../imports/Unit';
+import {Build} from '../imports/Build';
 import { Accounts } from 'meteor/accounts-base';
+import express from 'express';
+import path from 'path';
+import multer from 'multer';
+import { exec } from 'child_process';
+
+const uploads = multer({ dest: path.resolve(__dirname, "./uploads/") });
+const api = express();
+
+api.post('/upload', uploads.array('replays'), (req, res, next) => {
+
+    req.files.forEach(file => {
+        const path = file.path;
+        exec(`s2prot -gameevts ${path}`, (error, stdout, stderr) => {
+            if (error) {
+                console.log(`error: ${error.message}`);
+                return;
+            }
+            if (stderr) {
+                console.log(`stderr: ${stderr}`);
+                return;
+            }
+            console.log(`stdout: ${stdout}`);
+        });
+    });
+    console.log("Uploading", req.files[0].path);
+    next();
+});
+
+WebApp.connectHandlers.use(api);
 
 Meteor.publish('build', id => {
     return Build.find({ _id: id });

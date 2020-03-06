@@ -2,7 +2,7 @@
   import { Tracker } from 'meteor/tracker';
   import { Meteor } from 'meteor/meteor';
   import { Link, navigate } from 'svelte-routing';
-  import { Build } from '/lib/Build';
+  import { Build } from '/imports/Build';
 
   let builds = [];
   Tracker.autorun(() => {

@@ -1,5 +1,5 @@
 <script>
-    import { Build } from '/lib/Build';
+    import { Build } from '/imports/Build';
     export let id;
 
     const subscription = Meteor.subscribe('build', id);

@@ -1,7 +1,7 @@
 <script>
   import { Tracker } from 'meteor/tracker';
   import { Meteor } from 'meteor/meteor';
-  import { Build } from '/lib/Build';
+  import { Build } from '/imports/Build';
   import 'trix';
   import 'trix/dist/trix.css';
 

@@ -7,6 +7,7 @@
     import AdminBuild from './pages/AdminBuild';
     import { Router, Route } from 'svelte-routing';
     import Build from './pages/Build';
+    import Upload from './pages/Upload';
 </script>
 
 <Router url="">
@@ -20,5 +21,6 @@
         <Route path="/admin/login" component={AdminLogin} />
         <Route path="/admin/builds" component={AdminBuilds} />
         <Route path="/admin/build/:id" component={AdminBuild} />
+        <Route path="/admin/upload" component={Upload} />
     </div>
 </Router>

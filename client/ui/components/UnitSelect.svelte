@@ -1,7 +1,7 @@
 <script>
     import Tracker from './Tracker';
     import { Meteor } from 'meteor/meteor';
-    import { Unit } from '../../../lib/Unit';
+    import { Unit } from '../../../imports/Unit';
     import Select from './select/Select';
 
     export let race;
